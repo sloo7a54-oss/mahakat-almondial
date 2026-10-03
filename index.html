@@ -38,7 +38,7 @@ nav{display:flex;gap:8px;overflow:auto;padding:15px 0}nav button{border:1px soli
 <button onclick="show('teams',this)">المنتخبات</button>
 <button onclick="show('matches',this)">المباريات</button>
 <button onclick="show('axes',this)">المحاور</button>
-<button onclick="show('media',this)">الإعلام</button>
+<<button onclick="show('media',this)">المركز الإعلامي</button>
 <button onclick="show('honor',this)">التكريم</button>
 </nav>
 
@@ -52,8 +52,7 @@ nav{display:flex;gap:8px;overflow:auto;padding:15px 0}nav button{border:1px soli
 
 <script>
 const teams=["السعودية","إنجلترا","مصر","الولايات المتحدة","الأرجنتين","مالي","ألبانيا","سوريا","سويسرا","قطر","ساحل العاج","الإكوادور","اليابان","كوريا الجنوبية","كرواتيا","العراق","الإمارات","البحرين","عُمان","الكويت","اليمن","البرازيل","فرنسا","إسبانيا","ألمانيا","إيطاليا","البرتغال","هولندا","بلجيكا","المغرب","السنغال","تونس"];
-const pages={
-home:`<section class="panel"><h2>مرحبًا بكم في أرشيف المحاكاة</h2><p class="muted">هنا تُجمع تفاصيل التجربة في مكان واحد، من انطلاقة المنافسات مرورًا بالمباريات والتحديات وصولًا إلى التوثيق والتكريم.</p><div class="grid"><div class="card"><strong>🏆 رحلة البطولة</strong>المجموعات ← دور الـ16 ← ربع النهائي ← نصف النهائي ← النهائي</div><div class="card"><strong>🇸🇦 الهوية السعودية</strong>الثقافة والرؤية والمشاريع الوطنية والاستضافة المستقبلية.</div><div class="card"><strong>📸 ذاكرة المحاكاة</strong>التصاميم والفيديوهات والتغطيات واللحظات المميزة.</div></div></section>`,
+const pages={.</div><div class="card"><strong>📸 ذاكرة المحاكاة</strong>التصاميم والفيديوهات والتغطيات واللحظات المميزة.</div></div></section>`,
 teams:`<section class="panel"><h2>المنتخبات المشاركة</h2><p class="muted">قسم جميع الفرق، ويمكن لاحقًا إضافة شعار كل منتخب ونتائجه ومشواره.</p><div class="teams">${teams.map((x,i)=>`<div class="team">${String(i+1).padStart(2,"0")}<br>${x}</div>`).join("")}</div></section>`,
 matches:`<section class="panel"><h2>المباريات والمراحل</h2><p class="muted">سجل البطولة من دور المجموعات حتى النهائي.</p><div class="timeline"><div class="event"><b>دور المجموعات</b><br>48 منتخبًا والتنافس على التأهل.</div><div class="event"><b>دور الـ16</b><br>16 منتخبًا → 8 متأهلين.</div><div class="event"><b>ربع النهائي</b><br>8 منتخبات → 4 متأهلين.</div><div class="event"><b>نصف النهائي</b><br>4 منتخبات → منتخبين للنهائي.</div><div class="event"><b>النهائي</b><br>منتخبان → بطل المحاكاة.</div><div class="event"><b>المركز الثالث</b><br>مباراة واحدة بين الخاسرين في نصف النهائي.</div></div></section>`,
 axes:`<section class="panel"><h2>محاور المحاكاة</h2><p class="muted">توثيق البنود والمهام التي اشتغلنا عليها طوال التجربة.</p><div class="grid"><div class="card"><strong>🇸🇦 السعودية وإنجازات الرؤية</strong>رصد الإنجازات والمشاريع الوطنية وأهداف رؤية 2030.</div><div class="card"><strong>🚫 لا للعنصرية</strong>رسائل التعايش والاحترام والروح الرياضية.</div><div class="card"><strong>🎙️ المراكز الإعلامية</strong>تقديم المنتخبات، متابعة المباريات، التفاعل وصناعة المحتوى.</div><div class="card"><strong>🌍 الثقافة السعودية</strong>إبراز الهوية والثقافة السعودية أمام الجماهير.</div><div class="card"><strong>🏟️ الاستضافة والمستقبل</strong>كأس آسيا 2027، إكسبو 2030، كأس العالم 2034 والمشاريع المستقبلية.</div><div class="card"><strong>🎯 التحديات والمهام</strong>توثيق المهمات والنقاط والأدلة والتنافس بين المشاركين.</div></div></section>`,
