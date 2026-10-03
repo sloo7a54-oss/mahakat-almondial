@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>محاكاة المونديال عزيز قوم</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Tahoma,sans-serif;background:#f4f5f6;color:#11151b}
+.wrap{max-width:1050px;margin:auto;padding:18px}
+.hero{background:linear-gradient(135deg,#11151b,#2b3138);color:#fff;border-radius:28px;padding:34px 28px;overflow:hidden}
+.kicker{color:#e5c56c;font-weight:800;letter-spacing:1px}.hero h1{font-size:clamp(32px,7vw,58px);line-height:1.05;margin:10px 0}.hero p{color:#d7dbe0;line-height:1.9;max-width:720px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:22px}.stat{background:#ffffff12;border:1px solid #ffffff1c;border-radius:16px;padding:14px}.stat b{font-size:26px;display:block}.stat span{font-size:13px;color:#cbd0d6}
+nav{display:flex;gap:8px;overflow:auto;padding:15px 0}nav button{border:1px solid #ddd;background:#fff;border-radius:999px;padding:11px 16px;font-weight:700;white-space:nowrap;cursor:pointer}nav button.active{background:#11151b;color:#fff}
+.panel{background:#fff;border:1px solid #e2e4e7;border-radius:22px;padding:22px}.panel h2{margin:0 0 8px}.muted{color:#68707a;line-height:1.8}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}.card{background:#f7f8f9;border:1px solid #e4e6e8;border-radius:16px;padding:16px;line-height:1.7}.card strong{display:block;margin-bottom:5px}
+.teams{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:16px}.team{background:#fff;border:1px solid #ddd;border-radius:13px;padding:12px;text-align:center;font-weight:700}
+.timeline{border-right:3px solid #c9a44c;padding-right:15px;margin-top:15px}.event{background:#f7f8f9;border-radius:14px;padding:14px;margin-bottom:12px;line-height:1.7}
+.footer{margin-top:16px;background:#11151b;color:#fff;border-radius:20px;padding:20px;text-align:center;line-height:1.8}.gold{color:#e5c56c}
+@media(max-width:650px){.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}.teams{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<section class="hero">
+<div class="kicker">الأرشيف الرسمي للمحاكاة</div>
+<h1>محاكاة المونديال<br>عزيز قوم</h1>
+<p>رحلة توثّق المنتخبات، المباريات، المراحل، المحاور، التحديات، المحتوى الإعلامي واللحظات التي صنعت تجربة المحاكاة.</p>
+<div class="stats">
+<div class="stat"><b>48</b><span>منتخبًا</span></div>
+<div class="stat"><b>104</b><span>مباراة</span></div>
+<div class="stat"><b>7</b><span>جولات حتى اللقب</span></div>
+<div class="stat"><b>1</b><span>بطل</span></div>
+</div>
+</section>
+
+<nav>
+<button class="active" onclick="show('home',this)">الرئيسية</button>
+<button onclick="show('teams',this)">المنتخبات</button>
+<button onclick="show('matches',this)">المباريات</button>
+<button onclick="show('axes',this)">المحاور</button>
+<button onclick="show('media',this)">الإعلام</button>
+<button onclick="show('honor',this)">التكريم</button>
+</nav>
+
+<main id="content"></main>
+
+<div class="footer">
+<span class="gold">#محاكاه_المونديال_عزيز_قوم</span><br>
+عزيز قوم • اللجنة التنظيمية • <span class="gold">#اليانور</span>
+</div>
+</div>
+
+<script>
+const teams=["السعودية","إنجلترا","مصر","الولايات المتحدة","الأرجنتين","مالي","ألبانيا","سوريا","سويسرا","قطر","ساحل العاج","الإكوادور","اليابان","كوريا الجنوبية","كرواتيا","العراق","الإمارات","البحرين","عُمان","الكويت","اليمن","البرازيل","فرنسا","إسبانيا","ألمانيا","إيطاليا","البرتغال","هولندا","بلجيكا","المغرب","السنغال","تونس"];
+const pages={
+home:`<section class="panel"><h2>مرحبًا بكم في أرشيف المحاكاة</h2><p class="muted">هنا تُجمع تفاصيل التجربة في مكان واحد، من انطلاقة المنافسات مرورًا بالمباريات والتحديات وصولًا إلى التوثيق والتكريم.</p><div class="grid"><div class="card"><strong>🏆 رحلة البطولة</strong>المجموعات ← دور الـ16 ← ربع النهائي ← نصف النهائي ← النهائي</div><div class="card"><strong>🇸🇦 الهوية السعودية</strong>الثقافة والرؤية والمشاريع الوطنية والاستضافة المستقبلية.</div><div class="card"><strong>📸 ذاكرة المحاكاة</strong>التصاميم والفيديوهات والتغطيات واللحظات المميزة.</div></div></section>`,
+teams:`<section class="panel"><h2>المنتخبات المشاركة</h2><p class="muted">قسم جميع الفرق، ويمكن لاحقًا إضافة شعار كل منتخب ونتائجه ومشواره.</p><div class="teams">${teams.map((x,i)=>`<div class="team">${String(i+1).padStart(2,"0")}<br>${x}</div>`).join("")}</div></section>`,
+matches:`<section class="panel"><h2>المباريات والمراحل</h2><p class="muted">سجل البطولة من دور المجموعات حتى النهائي.</p><div class="timeline"><div class="event"><b>دور المجموعات</b><br>48 منتخبًا والتنافس على التأهل.</div><div class="event"><b>دور الـ16</b><br>16 منتخبًا → 8 متأهلين.</div><div class="event"><b>ربع النهائي</b><br>8 منتخبات → 4 متأهلين.</div><div class="event"><b>نصف النهائي</b><br>4 منتخبات → منتخبين للنهائي.</div><div class="event"><b>النهائي</b><br>منتخبان → بطل المحاكاة.</div><div class="event"><b>المركز الثالث</b><br>مباراة واحدة بين الخاسرين في نصف النهائي.</div></div></section>`,
+axes:`<section class="panel"><h2>محاور المحاكاة</h2><p class="muted">توثيق البنود والمهام التي اشتغلنا عليها طوال التجربة.</p><div class="grid"><div class="card"><strong>🇸🇦 السعودية وإنجازات الرؤية</strong>رصد الإنجازات والمشاريع الوطنية وأهداف رؤية 2030.</div><div class="card"><strong>🚫 لا للعنصرية</strong>رسائل التعايش والاحترام والروح الرياضية.</div><div class="card"><strong>🎙️ المراكز الإعلامية</strong>تقديم المنتخبات، متابعة المباريات، التفاعل وصناعة المحتوى.</div><div class="card"><strong>🌍 الثقافة السعودية</strong>إبراز الهوية والثقافة السعودية أمام الجماهير.</div><div class="card"><strong>🏟️ الاستضافة والمستقبل</strong>كأس آسيا 2027، إكسبو 2030، كأس العالم 2034 والمشاريع المستقبلية.</div><div class="card"><strong>🎯 التحديات والمهام</strong>توثيق المهمات والنقاط والأدلة والتنافس بين المشاركين.</div></div></section>`,
+media:`<section class="panel"><h2>المركز الإعلامي</h2><p class="muted">مساحة لحفظ كل ما صُنع خلال المحاكاة.</p><div class="grid"><div class="card"><strong>📢 الأخبار</strong>الإعلانات والتحديثات.</div><div class="card"><strong>🎬 الفيديوهات</strong>المقاطع والتغطيات والقصص.</div><div class="card"><strong>🎨 التصاميم</strong>الهوية البصرية وتصاميم المنتخبات والمحاور.</div><div class="card"><strong>💬 تفاعل الجمهور</strong>الردود والمشاركات والفعاليات الجماهيرية.</div><div class="card"><strong>📚 التقارير</strong>التقارير والملفات التوثيقية.</div><div class="card"><strong>📸 أبرز اللحظات</strong>أهم الصور والذكريات.</div></div></section>`,
+honor:`<section class="panel"><h2>الوفاء والتكريم</h2><p class="muted">لأن التجربة لم تكن مجرد مباريات، هذا القسم مخصص لكل من ساهم في نجاحها.</p><div class="grid"><div class="card"><strong>عزيز قوم</strong>صاحب فكرة وتنظيم المحاكاة.</div><div class="card"><strong>اللجنة التنظيمية</strong>جهود التنظيم والمتابعة وإدارة التفاصيل.</div><div class="card"><strong>#اليانور</strong>الراعي الرسمي والداعم للتجربة والجوائز.</div></div></section>`
+};
+function show(key,btn){document.getElementById("content").innerHTML=pages[key];document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));btn.classList.add("active");window.scrollTo({top:0,behavior:"smooth"});}
+show("home",document.querySelector("nav button"));
+</script>
+</body>
+</html>
